@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Create a new question</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create question</button>
+  </form>
+
+  <h3>Potential tags:</h3>
+  <ul>
+    {% for tag in tags %}
+      <li>{{ tag }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Example text:</h3>
+  <p>
+    {% for value in example_row %}
+      {{ value }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  </p>
+  <a href="{% url 'crowdsourcing_app:launch_crowdsource' pk=csv_data.id %}" class="btn btn-success">Done</a>
+
+{% endblock %}

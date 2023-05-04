@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Page not found</h2>
+  <p>The requested page was not found. Here is a list of available pages:</p>
+  <ul>
+    {% for url, view, name in url_list %}
+      <li>
+        <a href="{% url name %}">{{ url }}</a>
+        <span>{{ view }} - {{ name }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

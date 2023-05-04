@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>View Progress</h2>
+  <p>Progress: {{ progress }}%</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Answer</th>
+        <th>Contributor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for answer in answers %}
+        <tr>
+          <td>{{ answer.question.question_text }}</td>
+          <td>{{ answer.answer_text }}</td>
+          <td>{{ answer.crowdsource_contributor.username|default:answer.ip_address }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
